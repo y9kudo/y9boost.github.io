@@ -1,32 +1,35 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Simulated data for boosts
-    const boosts = [
-        { image: 'https://example.com/boost1.jpg', name: 'Boost 1', description: 'Описание буста 1' },
-        { image: 'https://example.com/boost2.jpg', name: 'Boost 2', description: 'Описание буста 2' },
-        { image: 'https://example.com/boost3.jpg', name: 'Boost 3', description: 'Описание буста 3' }
-    ];
+document.addEventListener('scroll', () => {
+    const mainText = document.getElementById('main-text');
+    if (window.scrollY > 0) {
+        mainText.style.fontSize = '24px';
+        mainText.style.position = 'fixed';
+        mainText.style.top = '10px';
+        mainText.style.right = '10px';
+    } else {
+        mainText.style.fontSize = '72px';
+        mainText.style.position = 'static';
+    }
 
-    const boostsContainer = document.getElementById('boosts-container');
-
-    // Generate HTML for each boost
-    boosts.forEach(boost => {
-        const boostElement = document.createElement('div');
-        boostElement.classList.add('boost');
-
-        const imageElement = document.createElement('img');
-        imageElement.src = boost.image;
-        imageElement.alt = boost.name;
-
-        const headingElement = document.createElement('h3');
-        headingElement.textContent = boost.name;
-
-        const descriptionElement = document.createElement('p');
-        descriptionElement.textContent = boost.description;
-
-        boostElement.appendChild(imageElement);
-        boostElement.appendChild(headingElement);
-        boostElement.appendChild(descriptionElement);
-
-        boostsContainer.appendChild(boostElement);
-    });
+    const getBoostedContainer = document.getElementById('get-boosted-container');
+    if (window.scrollY > window.innerHeight / 2) {
+        getBoostedContainer.classList.remove('hidden');
+    }
 });
+
+document.getElementById('get-boosted-button').addEventListener('click', () => {
+    document.getElementById('get-boosted-container').classList.add('hidden');
+    document.getElementById('boost-form').classList.remove('hidden');
+});
+
+document.getElementById('boost-form').addEventListener('change', calculateTotal);
+
+function calculateTotal() {
+    const rank5x5 = document.getElementById('rank-5x5').value;
+    const rank2x2 = document.getElementById('rank-2x2').value;
+
+    const price5x5 = rank5x5 ? 15 : 0;
+    const price2x2 = rank2x2 ? 10 : 0;
+
+    const totalPrice = price5x5 + price2x2;
+    document.getElementById('price').innerText = totalPrice;
+}
