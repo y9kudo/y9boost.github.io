@@ -1,44 +1,56 @@
-body {
+body, html {
     margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
     font-family: Arial, sans-serif;
-    background-color: #000;
-    color: #fff;
-}
-
-header {
-    background: url('https://www.unrealengine.com/public/images/ue5/ue5-header.jpg') no-repeat center center;
-    background-size: cover;
-    height: 50vh;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.container {
     text-align: center;
-    color: #fff;
 }
 
-header h1 {
-    font-size: 3rem;
+#main-text {
+    font-size: 72px;
+    transition: all 0.5s ease;
 }
 
-.content {
-    padding: 20px;
+.hidden {
+    display: none;
 }
 
-.boosts {
+#get-boosted-button {
+    font-size: 24px;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, purple, darkviolet);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
 }
 
-.boost {
-    background: #222;
-    border: 1px solid #333;
-    margin: 10px;
-    padding: 20px;
-    width: 300px;
-    text-align: center;
+label, input, select, #total-price {
+    margin: 10px 0;
 }
 
-.boost img {
-    max-width: 100%;
+input, select {
+    padding: 5px;
+    font-size: 16px;
+}
+
+button[type="submit"] {
+    font-size: 18px;
+    padding: 10px 20px;
+    background-color: purple;
+    color: white;
+    border: none;
+    cursor: pointer;
 }
