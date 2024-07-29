@@ -4,7 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>y9BOOST</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        #main-text {
+            font-size: 72px;
+            transition: all 0.5s ease;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #get-boosted-button {
+            font-size: 24px;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, purple, darkviolet);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label, input, select, #total-price {
+            margin: 10px 0;
+        }
+
+        input, select {
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        button[type="submit"] {
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: purple;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -20,14 +77,42 @@
             <select id="rank-5x5" name="rank-5x5">
                 <option value="Bronze 1 5x5">Bronze 1 5x5</option>
                 <option value="Bronze 2 5x5">Bronze 2 5x5</option>
-                <!-- Добавьте остальные звания -->
+                <option value="Bronze 3 5x5">Bronze 3 5x5</option>
+                <option value="Bronze 4 5x5">Bronze 4 5x5</option>
+                <option value="Silver 1 5x5">Silver 1 5x5</option>
+                <option value="Silver 2 5x5">Silver 2 5x5</option>
+                <option value="Silver 3 5x5">Silver 3 5x5</option>
+                <option value="Silver 4 5x5">Silver 4 5x5</option>
+                <option value="Gold 1 5x5">Gold 1 5x5</option>
+                <option value="Gold 2 5x5">Gold 2 5x5</option>
+                <option value="Gold 3 5x5">Gold 3 5x5</option>
+                <option value="Gold 4 5x5">Gold 4 5x5</option>
+                <option value="Phoenix 5x5">Phoenix 5x5</option>
+                <option value="Ranger 5x5">Ranger 5x5</option>
+                <option value="Champion 5x5">Champion 5x5</option>
+                <option value="Master 5x5">Master 5x5</option>
+                <option value="Legend 5x5">Legend 5x5</option>
             </select>
 
             <label for="rank-2x2">Ваше звание в 2x2:</label>
             <select id="rank-2x2" name="rank-2x2">
                 <option value="Bronze 1 2x2">Bronze 1 2x2</option>
                 <option value="Bronze 2 2x2">Bronze 2 2x2</option>
-                <!-- Добавьте остальные звания -->
+                <option value="Bronze 3 2x2">Bronze 3 2x2</option>
+                <option value="Bronze 4 2x2">Bronze 4 2x2</option>
+                <option value="Silver 1 2x2">Silver 1 2x2</option>
+                <option value="Silver 2 2x2">Silver 2 2x2</option>
+                <option value="Silver 3 2x2">Silver 3 2x2</option>
+                <option value="Silver 4 2x2">Silver 4 2x2</option>
+                <option value="Gold 1 2x2">Gold 1 2x2</option>
+                <option value="Gold 2 2x2">Gold 2 2x2</option>
+                <option value="Gold 3 2x2">Gold 3 2x2</option>
+                <option value="Gold 4 2x2">Gold 4 2x2</option>
+                <option value="Phoenix 2x2">Phoenix 2x2</option>
+                <option value="Ranger 2x2">Ranger 2x2</option>
+                <option value="Champion 2x2">Champion 2x2</option>
+                <option value="Master 2x2">Master 2x2</option>
+                <option value="Legend 2x2">Legend 2x2</option>
             </select>
 
             <label for="telegram">Ваш Telegram аккаунт:</label>
@@ -40,6 +125,42 @@
             <button type="submit">Оплатить</button>
         </form>
     </div>
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('scroll', () => {
+            const mainText = document.getElementById('main-text');
+            if (window.scrollY > 0) {
+                mainText.style.fontSize = '24px';
+                mainText.style.position = 'fixed';
+                mainText.style.top = '10px';
+                mainText.style.right = '10px';
+            } else {
+                mainText.style.fontSize = '72px';
+                mainText.style.position = 'static';
+            }
+
+            const getBoostedContainer = document.getElementById('get-boosted-container');
+            if (window.scrollY > window.innerHeight / 2) {
+                getBoostedContainer.classList.remove('hidden');
+            }
+        });
+
+        document.getElementById('get-boosted-button').addEventListener('click', () => {
+            document.getElementById('get-boosted-container').classList.add('hidden');
+            document.getElementById('boost-form').classList.remove('hidden');
+        });
+
+        document.getElementById('boost-form').addEventListener('change', calculateTotal);
+
+        function calculateTotal() {
+            const rank5x5 = document.getElementById('rank-5x5').value;
+            const rank2x2 = document.getElementById('rank-2x2').value;
+
+            const price5x5 = rank5x5 ? 15 : 0;
+            const price2x2 = rank2x2 ? 10 : 0;
+
+            const totalPrice = price5x5 + price2x2;
+            document.getElementById('price').innerText = totalPrice;
+        }
+    </script>
 </body>
 </html>
