@@ -3,18 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Standoff 2 Boosts</title>
-    <link rel="stylesheet" href="style.css">
+    <title>y9BOOST</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Standoff 2 Boosts</h1>
-    </header>
-    <div class="content">
-        <h2>Our Boost Services</h2>
-        <div class="boosts" id="boosts-container">
-            <!-- Boosts will be dynamically added here from JavaScript -->
+    <div class="container">
+        <div id="main-text">y9BOOST</div>
+        <div id="get-boosted-container" class="hidden">
+            <button id="get-boosted-button">GET BOOSTED!</button>
         </div>
+        <form id="boost-form" class="hidden">
+            <label for="game-id">Ваш игровой ID:</label>
+            <input type="text" id="game-id" name="game-id" required>
+
+            <label for="rank-5x5">Ваше звание в 5x5:</label>
+            <select id="rank-5x5" name="rank-5x5">
+                <option value="Bronze 1 5x5">Bronze 1 5x5</option>
+                <option value="Bronze 2 5x5">Bronze 2 5x5</option>
+                <!-- Добавьте остальные звания -->
+            </select>
+
+            <label for="rank-2x2">Ваше звание в 2x2:</label>
+            <select id="rank-2x2" name="rank-2x2">
+                <option value="Bronze 1 2x2">Bronze 1 2x2</option>
+                <option value="Bronze 2 2x2">Bronze 2 2x2</option>
+                <!-- Добавьте остальные звания -->
+            </select>
+
+            <label for="telegram">Ваш Telegram аккаунт:</label>
+            <input type="text" id="telegram" name="telegram" required>
+
+            <div id="total-price">
+                Итог: <span id="price">0</span> Руб
+            </div>
+            
+            <button type="submit">Оплатить</button>
+        </form>
     </div>
     <script src="script.js"></script>
 </body>
